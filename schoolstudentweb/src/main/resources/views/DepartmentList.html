@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}">
+    <head>
+        <title th:text="#{department.caption.plural}"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+ 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>    
+    	<div class="container">
+	    	<h2 th:text="#{department.caption.plural}"></h2>
+
+	        <table class="table table-striped table-responsive-md">
+	            <tr>
+	                <th th:text="#{department.departmentId}"></th>        <!--//# Überschrift kennzeichnen-->
+	            	<th th:text="#{department.name}"></th>
+					<th th:text="#{department.nameShort}"></th>
+					<th th:text="#{department.teacher}"></th>
+					<th th:text="#{department.schoolClasses}"></th>
+	            </tr>
+	            <tr th:each="department:${departments}">                 <!--//§ auf Attribute einer Instanz zugreifen-->
+
+		            <td th:text="${department.departmentId}"></td>
+					<td th:text="${department.name}"></td>
+					<td th:text="${department.nameShort}"></td>
+					<td th:text="${department.teacher}"></td>
+					<td th:text="${department.schoolClasses}"></td>
+					<td>
+						<a th:href="@{/mvc/departments/show/{departmentId}/schoolClasses(departmentId=${department.departmentId})}">
+							Zeige Schulklassen
+
+						</a>
+					</td>
+	            </tr>
+	        </table>
+		</div>
+    </body>
+</html>
